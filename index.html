@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Symphony - Genetic Music Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div id="ui-panel">
+        <h1>DNA SYMPHONY</h1>
+        
+        <div class="section">
+            <label class="label">DNA Sequence</label>
+            <input type="text" id="sequence-input" maxlength="50" placeholder="ATGCATGC" value="ATGCATGCATGCATGCATGC">
+            <div class="helper-text">Enter nucleotide bases: A, T, G, C (up to 50 bases)</div>
+        </div>
+
+        <div class="section">
+            <label class="label">Playback Controls</label>
+            <div class="controls">
+                <button id="play-btn">Play</button>
+                <button id="reset-btn" class="secondary">Reset</button>
+                <button id="random-btn" class="secondary">Random</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <label class="label">Tempo</label>
+            <div class="slider-container">
+                <div class="slider-value">
+                    <span id="tempo-value">120</span>
+                    <span style="font-size: 11px; color: #666;">BPM</span>
+                </div>
+                <input type="range" id="tempo-slider" min="60" max="240" step="10" value="120">
+            </div>
+        </div>
+
+        <div class="section">
+            <label class="label">Preset Sequences</label>
+            <div class="presets">
+                <button onclick="loadPreset('ATGCATGCATGCATGC')">Simple</button>
+                <button onclick="loadPreset('AAAATTTTGGGGCCCC')">Blocks</button>
+                <button onclick="loadPreset('ATCGATCGATCGATCG')">Repeat</button>
+                <button onclick="loadPreset('TACGTACGTACGTACG')">Mirror</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <label class="label">Base Mapping</label>
+            <div class="base-legend">
+                <div class="base-item">
+                    <div class="base-color" style="background: #ff4444;"></div>
+                    <span>A → C (261Hz)</span>
+                </div>
+                <div class="base-item">
+                    <div class="base-color" style="background: #ffaa00;"></div>
+                    <span>T → E (330Hz)</span>
+                </div>
+                <div class="base-item">
+                    <div class="base-color" style="background: #44ff44;"></div>
+                    <span>G → G (392Hz)</span>
+                </div>
+                <div class="base-item">
+                    <div class="base-color" style="background: #ff44ff;"></div>
+                    <span>C → A (440Hz)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <label class="label">Statistics</label>
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-label">Length</div>
+                    <div class="info-value" id="length-stat">20</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Status</div>
+                    <div class="info-value" id="status-stat">Paused</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <div style="margin-bottom: 6px; font-weight: 600; color: #ccc;">Controls</div>
+        <div>• Drag: Rotate view</div>
+        <div>• Scroll: Zoom in/out</div>
+        <div>• Each base plays a musical note</div>
+    </div>
+
+    <div class="loading" id="loading">Loading 3D scene...</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
